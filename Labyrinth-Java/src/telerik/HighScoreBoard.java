@@ -27,9 +27,7 @@ public class HighScoreBoard {
 			while(index<list.size()){
 				pl = (Player) list.get(index);
 				if(player.movesCount<=pl.movesCount){					
-					//{
 					list.add(index,player);
-					//}
 				return true;
 				}
 				index++;
@@ -43,8 +41,6 @@ public class HighScoreBoard {
 					pl = (Player) list.get(index);
 					if (player.movesCount <= pl.movesCount) {
 						list.add(index, player);
-
-
 						return true;
 					}
 					index++;

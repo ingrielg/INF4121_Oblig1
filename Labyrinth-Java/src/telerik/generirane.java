@@ -34,8 +34,7 @@ public class generirane {
 		while(isSolvable(3, 3)==false);
 		playersCurrentRow = 3;
 		playersCurrentColumn = 3;
-		
-		
+				
 		maze[playersCurrentRow][playersCurrentColumn] = '*';
 		printMaze();
 	}	
@@ -84,9 +83,7 @@ public class generirane {
 			for(int column=0;column<7;column++){
 				System.out.print(maze[row][column]+" ");
 			}
-			//{
 				System.out.println();
-			//}
 		}
 	}
 	
@@ -128,16 +125,8 @@ public class generirane {
 			if (maze[playersCurrentRow][playersCurrentColumn - 1] != 'X') {
 				swapCells(playersCurrentRow, playersCurrentRow,
 						playersCurrentColumn, playersCurrentColumn - 1);
-				//{
 				playersCurrentColumn--;
-					//{
-						//{
-							//{
 				playersMovesCount++;
-							//}
-						//}
-					//}
-				//}
 			} else {
 				System.out.println("Invalid move!");
 				printMaze();
@@ -146,18 +135,8 @@ public class generirane {
 			if (maze[playersCurrentRow][playersCurrentColumn + 1] != 'X') {
 				swapCells(playersCurrentRow, playersCurrentRow,
 						playersCurrentColumn, playersCurrentColumn + 1);
-				//System.out.println();
-				//{
-					//{
-				//printMaze();
-						//{
-							//{
 				playersCurrentColumn++;
 				playersMovesCount++;
-							//}
-						//}
-					//}
-				//}
 			} else {
 				System.out.println("Invalid move!");
 				printMaze();
@@ -166,16 +145,8 @@ public class generirane {
 			if (maze[playersCurrentRow - 1][playersCurrentColumn] != 'X') {
 				swapCells(playersCurrentRow, playersCurrentRow - 1,
 						playersCurrentColumn, playersCurrentColumn);
-				//{
-					//{
-						//{
-							//{
 				playersCurrentRow--;
 				playersMovesCount++;
-							//}
-						//}
-					//}
-				//}
 			} else {
 				System.out.println("Invalid move!");
 				printMaze();
@@ -184,12 +155,8 @@ public class generirane {
 			if (maze[playersCurrentRow + 1][playersCurrentColumn] != 'X') {
 				swapCells(playersCurrentRow, playersCurrentRow + 1,
 						playersCurrentColumn, playersCurrentColumn);
-				//{
 				playersCurrentRow++;
-					//{
 				playersMovesCount++;
-					//}
-				//}
 			} else {
 				System.out.println("Invalid move!");
 				printMaze();

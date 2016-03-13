@@ -33,6 +33,8 @@ public class generirane {
 		} while(isSolvable(3, 3)==false);
 		playersCurrentRow = 3;
 		playersCurrentColumn = 3;
+		isExit = false;
+		playersMovesCount = 0;
 				
 		maze[playersCurrentRow][playersCurrentColumn] = '*';
 		printMaze();
@@ -143,51 +145,71 @@ public class generirane {
 	
 	public  void movePlayer(char firstLetter){
 		//Moves the player in the correct direction if a legal move is given
-		if ((firstLetter == 'L' || firstLetter == 'l')&&(maze[playersCurrentRow][playersCurrentColumn - 1] != 'X')) {
-			//if (maze[playersCurrentRow][playersCurrentColumn - 1] != 'X') {
-				swapCells(playersCurrentRow, playersCurrentRow,
-						playersCurrentColumn, playersCurrentColumn - 1);
-				playersCurrentColumn--;
-				playersMovesCount++;
-			//} else {
-				//System.out.println("Invalid move!");
-				//printMaze();
-			//}
-		} else if ((firstLetter == 'R' || firstLetter == 'r')&&(maze[playersCurrentRow][playersCurrentColumn + 1] != 'X')) {
-//			if (maze[playersCurrentRow][playersCurrentColumn + 1] != 'X') {
-				swapCells(playersCurrentRow, playersCurrentRow,
-						playersCurrentColumn, playersCurrentColumn + 1);
-				playersCurrentColumn++;
-				playersMovesCount++;
-//			} else {
-//				System.out.println("Invalid move!");
-//				printMaze();
-//			}
-		} else if ((firstLetter == 'U' || firstLetter == 'u')&&(maze[playersCurrentRow - 1][playersCurrentColumn] != 'X')) {
-//			if (maze[playersCurrentRow - 1][playersCurrentColumn] != 'X') {
-				swapCells(playersCurrentRow, playersCurrentRow - 1,
-						playersCurrentColumn, playersCurrentColumn);
-				playersCurrentRow--;
-				playersMovesCount++;
-//			} else {
-//				System.out.println("Invalid move!");
-//				printMaze();
-//			}
-		} else if ((firstLetter == 'D' || firstLetter == 'd')&&(maze[playersCurrentRow + 1][playersCurrentColumn] != 'X')) {
-//			if (maze[playersCurrentRow + 1][playersCurrentColumn] != 'X') {
-				swapCells(playersCurrentRow, playersCurrentRow + 1,
-						playersCurrentColumn, playersCurrentColumn);
-				playersCurrentRow++;
-				playersMovesCount++;
-//			} else {
-//				System.out.println("Invalid move!");
-//				printMaze();
-//			}
+		int playersMoveRow = playersCurrentRow;
+		int playersMoveColumn = playersCurrentColumn;
+		if ((firstLetter == 'L')||(firstLetter == 'l')) {
+			playersMoveColumn = playersCurrentColumn - 1;
+		} else if ((firstLetter == 'R')||(firstLetter == 'r')) {
+			playersMoveColumn = playersCurrentColumn + 1;
+		} else if ((firstLetter == 'U')||(firstLetter == 'u')) {
+			playersMoveRow = playersCurrentRow - 1;
+		} else if ((firstLetter == 'D')||(firstLetter == 'd')) {
+			playersMoveRow = playersCurrentRow + 1;
+		}
+		if (maze[playersMoveRow][playersMoveColumn] != 'X') {
+			swapCells(playersCurrentRow, playersMoveRow, playersCurrentColumn, playersMoveColumn);
+			playersCurrentRow = playersMoveRow;
+			playersCurrentColumn = playersMoveColumn;
+			playersMovesCount++;
 		} else {
-			//System.out.println("Invalid command!");
 			System.out.println("Invalid move!");
 			printMaze();
 		}
+//		if ((firstLetter == 'L' || firstLetter == 'l')&&(maze[playersCurrentRow][playersCurrentColumn - 1] != 'X')) {
+//			//if (maze[playersCurrentRow][playersCurrentColumn - 1] != 'X') {
+//				swapCells(playersCurrentRow, playersCurrentRow,
+//						playersCurrentColumn, playersCurrentColumn - 1);
+//				playersCurrentColumn--;
+//				playersMovesCount++;
+//			//} else {
+//				//System.out.println("Invalid move!");
+//				//printMaze();
+//			//}
+//		} else if ((firstLetter == 'R' || firstLetter == 'r')&&(maze[playersCurrentRow][playersCurrentColumn + 1] != 'X')) {
+////			if (maze[playersCurrentRow][playersCurrentColumn + 1] != 'X') {
+//				swapCells(playersCurrentRow, playersCurrentRow,
+//						playersCurrentColumn, playersCurrentColumn + 1);
+//				playersCurrentColumn++;
+//				playersMovesCount++;
+////			} else {
+////				System.out.println("Invalid move!");
+////				printMaze();
+////			}
+//		} else if ((firstLetter == 'U' || firstLetter == 'u')&&(maze[playersCurrentRow - 1][playersCurrentColumn] != 'X')) {
+////			if (maze[playersCurrentRow - 1][playersCurrentColumn] != 'X') {
+//				swapCells(playersCurrentRow, playersCurrentRow - 1,
+//						playersCurrentColumn, playersCurrentColumn);
+//				playersCurrentRow--;
+//				playersMovesCount++;
+////			} else {
+////				System.out.println("Invalid move!");
+////				printMaze();
+////			}
+//		} else if ((firstLetter == 'D' || firstLetter == 'd')&&(maze[playersCurrentRow + 1][playersCurrentColumn] != 'X')) {
+////			if (maze[playersCurrentRow + 1][playersCurrentColumn] != 'X') {
+//				swapCells(playersCurrentRow, playersCurrentRow + 1,
+//						playersCurrentColumn, playersCurrentColumn);
+//				playersCurrentRow++;
+//				playersMovesCount++;
+////			} else {
+////				System.out.println("Invalid move!");
+////				printMaze();
+////			}
+//		} else {
+//			//System.out.println("Invalid command!");
+//			System.out.println("Invalid move!");
+//			printMaze();
+//		}
 	}
 			
 	void swapCells(int currentRow, int newRow, int currentColumn, int newColumn){

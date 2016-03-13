@@ -31,7 +31,7 @@ public class Game {
 //				System.out.println("Your score is in top 5!");
 //				labyrinth.board.printBoard(labyrinth.board.list);
 //			}
-			resetGame();
+//			resetGame();
 //			labyrinth.isExit = false;
 //			labyrinth.playersCurrentColumn = 3;
 //			labyrinth.playersCurrentRow = 3;
@@ -61,10 +61,10 @@ public class Game {
 		}
 	}
 	
-	public static void resetGame() {
-		labyrinth.isExit = false;
-		labyrinth.playersCurrentColumn = 3;
-		labyrinth.playersCurrentRow = 3;
-		labyrinth.playersMovesCount = 0;
-	}
+//	public static void resetGame() {
+//		labyrinth.isExit = false;
+//		labyrinth.playersCurrentColumn = 3;
+//		labyrinth.playersCurrentRow = 3;
+//		labyrinth.playersMovesCount = 0;
+//	}
 }

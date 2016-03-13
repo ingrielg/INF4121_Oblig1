@@ -2,27 +2,23 @@ package telerik;
 
 import java.util.Scanner;
 
-
-
 public class Game {
+	//The main class of the project. This is used to run the project.
 	public static void main(String[] args){
+		//The main method. This method starts when the project is run and then initiates the 
+		//other classes and calls the other methods as needed.
 		generirane labyrinth = new generirane();
 		labyrinth.initializeScoreBoard();
 		while(true){
 			labyrinth.initializeMaze();
 			while((labyrinth.playersCurrentColumn!=0)&&(labyrinth.playersCurrentColumn!=6)
 					&&(labyrinth.playersCurrentRow!=0)&&(labyrinth.playersCurrentRow!=6)){
-				labyrinth.inputCommand();
-				
-				
-				
+				labyrinth.inputCommand();			
 			}
 			System.out.println();
 			labyrinth.printMaze();
 			System.out.println("Congratulations! You escaped in "+labyrinth.playersMovesCount+" moves.");
 			System.out.println();
-			
-			
 			
 			Scanner scanner = new Scanner(System.in);
 			System.out.println("Enter your name : ");
@@ -36,9 +32,6 @@ public class Game {
 			labyrinth.playersCurrentColumn = 3;
 			labyrinth.playersCurrentRow = 3;
 			labyrinth.playersMovesCount = 0;
-		}
-		
-		
-		
+		}		
 	}
 }

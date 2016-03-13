@@ -18,34 +18,37 @@ public class HighScoreBoard {
 			return true;
 		}	
 		Player pl = (Player) list.get(list.size()-1);
-		if((list.size()>0)&&(list.size()<boardSize)){	
-			if(player.movesCount>pl.movesCount){
+		if((list.size()>0)&&(list.size()<boardSize)&&(player.movesCount>=pl.movesCount)){	
+//			if(player.movesCount>pl.movesCount){
 				list.addLast(player);
 				return true;
+//			}
+		}
+//			int index = 0;
+//			while(index<list.size()){
+//				pl = (Player) list.get(index);
+//				if(player.movesCount<=pl.movesCount){					
+//					list.add(index,player);
+//				return true;
+//				}
+//				index++;
+//			}
+//		}
+		if ((list.size()>0)&&(player.movesCount<pl.movesCount)) {
+//		if((list.size()==boardSize)&&(player.movesCount<pl.movesCount)) {
+			if((list.size()==boardSize)){
+				list.remove(list.size() - 1);
 			}
 			int index = 0;
-			while(index<list.size()){
+			while (index < list.size()) {
 				pl = (Player) list.get(index);
-				if(player.movesCount<=pl.movesCount){					
-					list.add(index,player);
-				return true;
+				if (player.movesCount <= pl.movesCount) {
+					list.add(index, player);
+					return true;
 				}
 				index++;
 			}
-		}
-		if((list.size()==boardSize)) {
-			if((player.movesCount<pl.movesCount)){
-				list.remove(list.size() - 1);
-				int index = 0;
-				while (index < list.size()) {
-					pl = (Player) list.get(index);
-					if (player.movesCount <= pl.movesCount) {
-						list.add(index, player);
-						return true;
-					}
-					index++;
-				}
-			}
+			//}
 		}
 		return false;
 	}

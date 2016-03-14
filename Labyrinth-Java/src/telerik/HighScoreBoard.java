@@ -5,10 +5,10 @@ import java.util.LinkedList;
 public class HighScoreBoard {
 	//This class handles the high score board and adding new players 
 	//to this board when they get one of the five best scores
-	LinkedList list;  	//This gives a warning saying it should be parameterized as it is a raw type
+	LinkedList<Player> list;  	//This gave a warning. Added a parameter with the type of elements to be stored
 	public final int boardSize = 5;
 	public HighScoreBoard(){
-		list = new LinkedList();
+		list = new LinkedList<Player>();
 	}
 	
 	public boolean addPlayerToChart(Player player){
@@ -19,23 +19,11 @@ public class HighScoreBoard {
 		}	
 		Player pl = (Player) list.get(list.size()-1);
 		if((list.size()>0)&&(list.size()<boardSize)&&(player.movesCount>=pl.movesCount)){	
-//			if(player.movesCount>pl.movesCount){
 				list.addLast(player);
 				return true;
-//			}
 		}
-//			int index = 0;
-//			while(index<list.size()){
-//				pl = (Player) list.get(index);
-//				if(player.movesCount<=pl.movesCount){					
-//					list.add(index,player);
-//				return true;
-//				}
-//				index++;
-//			}
-//		}
+
 		if ((list.size()>0)&&(player.movesCount<pl.movesCount)) {
-//		if((list.size()==boardSize)&&(player.movesCount<pl.movesCount)) {
 			if((list.size()==boardSize)){
 				list.remove(list.size() - 1);
 			}
@@ -48,12 +36,11 @@ public class HighScoreBoard {
 				}
 				index++;
 			}
-			//}
 		}
 		return false;
 	}
 	
-	void printBoard(LinkedList list){
+	void printBoard(LinkedList<Player> list){
 		//Prints the high score board
 		System.out.println("Score :");
 		for(int i=0;i<list.size();i++){

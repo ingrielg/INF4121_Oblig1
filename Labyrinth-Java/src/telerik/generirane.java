@@ -31,14 +31,20 @@ public class generirane {
 				}
 			}
 		} while(isSolvable(3, 3)==false);
+		resetToStart();
+				
+		maze[playersCurrentRow][playersCurrentColumn] = '*';
+		printMaze();
+	}
+	
+	public void resetToStart() {
+		//Resets values to the starting values. Need to be done when generating a new labyrinth
 		playersCurrentRow = 3;
 		playersCurrentColumn = 3;
 		isExit = false;
 		playersMovesCount = 0;
-				
-		maze[playersCurrentRow][playersCurrentColumn] = '*';
-		printMaze();
-	}	
+	}
+	
 	
 	public void initializeScoreBoard(){
 		//Creates the High Score Board
@@ -51,22 +57,21 @@ public class generirane {
 			isExit = true;
 			return isExit;
 		}
-		int moveLen = 2;
-		int moveRow[] = new int[moveLen];
-		int moveCol[] = new int[moveLen];		
-		moveRow[0] = row-1;
-		moveRow[1] = row+1;
-		moveCol[0] = col-1;
-		moveCol[1] = col+1;
+		int checkLen = 4;
+		int check[][] = new int[checkLen][2];
+		check[0][0] = row-1;
+		check[0][1] = col;
+		check[1][0] = row+1;
+		check[1][1] = col;
+		check[2][0] = row;
+		check[2][1] = col-1;
+		check[3][0] = row;
+		check[3][1] = col+1;
 		
-		for (int i=0;i<moveLen;i++) {
-			if((maze[moveRow[i]][col]=='-')&&(isVisited[moveRow[i]][col]==false)) {
+		for (int i=0;i<checkLen;i++) {
+			if((maze[check[i][0]][check[i][1]]=='-')&&(isVisited[check[i][0]][check[i][1]]==false)) {
 				isVisited[row][col] = true;
-				isSolvable(moveRow[i], col);
-			}
-			if((maze[row][moveCol[i]]=='-')&&(isVisited[row][moveCol[i]]==false)) {
-				isVisited[row][col] = true;
-				isSolvable(row, moveCol[i]);
+				isSolvable(check[i][0], check[i][1]);
 			}
 		}
 		return isExit;
@@ -78,7 +83,7 @@ public class generirane {
 			for(int column=0;column<7;column++){
 				System.out.print(maze[row][column]+" ");
 			}
-				System.out.println();
+			System.out.println();
 		}
 	}
 	
@@ -111,6 +116,7 @@ public class generirane {
         } else {
         	System.out.println("Invalid command!");
         }
+		//scanner.close(); //Closed the scanner, as it gives a warning without this statement. Unfortunately, including this statement crashes the code.
 	}
 	
 	public  void movePlayer(char firstLetter){
